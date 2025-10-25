@@ -1,0 +1,498 @@
+/* ================================================== */
+/* 1. VARIÁVEIS DE COR E FONTES */
+/* ================================================== */
+:root {
+    --primary-color: #000000;         /* Preto Sólido para Fundo/Cabeçalho */
+    --secondary-color: #D4AF37;       /* Dourado Metálico (Destaque/Luxo) */
+    --accent-color: #F8F4E6;          /* Bege/Branco Suave (Fundo de Seções) */
+    --text-color-dark: #333333;       /* Texto Principal */
+    --text-color-light: #FFFFFF;      /* Texto em Fundo Escuro */
+    --background-color: #FFFFFF;      /* Fundo Geral da Página */
+
+    /* Fontes */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+/* ================================================== */
+/* 2. ESTILOS GERAIS E RESET BÁSICO */
+/* ================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-color-dark);
+    line-height: 1.6;
+    background-color: var(--background-color);
+    /* Garante que haja um pequeno espaço abaixo do último elemento para o float button */
+    padding-bottom: 70px; 
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.5em;
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 10px;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Herdará a cor do elemento pai (branco no header) */
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+/* Estilo para garantir que o link dentro do botão não afete a cor do texto */
+a button {
+    color: var(--primary-color);
+}
+
+button, .agendamento-btn {
+    padding: 12px 25px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover, .agendamento-btn:hover {
+    background-color: #C0A030; /* Dourado Ligeiramente mais escuro */
+    transform: translateY(-2px);
+}
+
+/* ================================================== */
+/* 3. HEADER E NAVEGAÇÃO (FIXA) */
+/* ================================================== */
+.luxury-header {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: fixed; /* O cabeçalho fica fixo */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* AJUSTE PARA O LOGO IMAGEM */
+.luxury-header .logo {
+    display: flex; 
+    align-items: center;
+}
+
+.luxury-header .header-logo {
+    height: 40px; /* Altura da imagem do logo */
+    width: auto;
+}
+
+.luxury-header nav a {
+    margin: 0 15px;
+    font-size: 1.05em;
+    padding: 5px 0; /* Padding para o border-bottom do ativo */
+    color: var(--text-color-light); /* Garante a cor branca dos links */
+}
+
+/* ESTILO DO MENU ATIVO (JAVASCRIPT) */
+.luxury-header nav a.active {
+    color: var(--secondary-color) !important;
+    border-bottom: 2px solid var(--secondary-color);
+    font-weight: 600;
+}
+
+/* ================================================== */
+/* 4. SEÇÃO HERO (INÍCIO) */
+/* ================================================== */
+.hero {
+    /* Use sua própria imagem aqui, se desejar */
+    background: url('assets/hero-bg.jpg') no-repeat center center/cover; 
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 80px; 
+}
+
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.5); 
+    padding: 40px 60px;
+    border-radius: 10px;
+    color: var(--text-color-light);
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.hero-content .subtitle {
+    font-family: var(--font-body);
+    font-size: 1.3em;
+    font-weight: 300;
+    margin-bottom: 30px;
+    color: #EBEBEB;
+}
+
+.hero-content .large {
+    padding: 15px 35px;
+    font-size: 1.1em;
+}
+
+/* ================================================== */
+/* 5. SEÇÃO SOBRE JULIA EMILY (#sobre) */
+/* ================================================== */
+.about-je {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: var(--accent-color); 
+}
+
+.about-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 50px;
+    text-align: left;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-je .text-block {
+    flex: 2; 
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: var(--text-color-dark);
+}
+
+.about-je .text-block strong {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.image-placeholder-je {
+    flex: 1; 
+    min-width: 300px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px; 
+}
+
+.about-je .profile-photo {
+    width: 100%;       
+    height: 100%;      
+    object-fit: cover; 
+    display: block;    
+}
+
+/* ================================================== */
+/* 6. SEÇÃO SERVIÇOS (#servicos) */
+/* ================================================== */
+.services {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: var(--background-color);
+}
+
+.service-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.service-item {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    padding: 30px;
+    border: 1px solid #EBEBEB;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: var(--text-color-light);
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-item i {
+    font-size: 3em;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.service-item h3 {
+    color: var(--primary-color);
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    color: var(--text-color-dark);
+    font-size: 1em;
+    margin-bottom: 0; /* Ajuste para o detalhe de preço */
+}
+
+/* Detalhes de Preço */
+.service-details {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.service-details .price {
+    color: var(--secondary-color);
+    font-family: var(--font-heading);
+    font-size: 1.4em;
+}
+
+.service-details .duration {
+    color: var(--text-color-dark);
+    font-size: 0.95em;
+    font-weight: 400;
+}
+
+.service-details .duration i {
+    color: var(--secondary-color);
+    margin-right: 5px;
+}
+
+.service-note {
+    max-width: 800px;
+    margin: 40px auto 0;
+    font-style: italic;
+    color: #666;
+    padding: 15px;
+    border: 1px dashed var(--secondary-color);
+    border-radius: 5px;
+}
+
+
+/* ================================================== */
+/* 7. SEÇÃO PORTFÓLIO (#galeria) */
+/* ================================================== */
+.gallery {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: var(--accent-color);
+}
+
+.gallery-grid {
+    display: grid;
+    /* Colunas ajustáveis automaticamente */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 250px; 
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    display: block;
+}
+
+/* ================================================== */
+/* 8. SEÇÃO LOCALIZAÇÃO (#endereco) */
+/* ================================================== */
+.location {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: var(--background-color);
+}
+
+.address-text {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+/* ================================================== */
+/* 9. SEÇÃO CONTATO/AGENDAMENTO (#contato) */
+/* ================================================== */
+.contact {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: var(--accent-color);
+}
+
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: var(--text-color-light);
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: 1em;
+    width: 100%;
+    transition: border-color 0.3s;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+}
+
+#contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+
+/* ================================================== */
+/* 10. FOOTER */
+/* ================================================== */
+.luxury-footer {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+    text-align: center;
+    padding: 30px 5%;
+    font-size: 0.9em;
+}
+
+.luxury-footer p {
+    margin: 5px 0;
+}
+
+.luxury-footer .social-links {
+    margin-top: 15px;
+}
+
+.luxury-footer .social-links a {
+    color: var(--secondary-color);
+    font-size: 1.5em;
+    margin: 0 10px;
+}
+
+/* ================================================== */
+/* 11. BOTÃO FLUTUANTE WHATSAPP (FIXO) */
+/* ================================================== */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25D366; 
+    color: var(--text-color-light);
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 9999; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.whatsapp-float:hover {
+    background-color: #128C7E;
+}
+
+
+/* ================================================== */
+/* 12. RESPONSIVIDADE (MOBILE FIRST) */
+/* ================================================== */
+@media (max-width: 900px) {
+    /* Ajustes Gerais */
+    h1 { font-size: 2.5em; }
+    h2 { font-size: 2em; }
+
+    /* Header */
+    .luxury-header {
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    .luxury-header nav {
+        margin: 10px 0;
+    }
+    .luxury-header nav a {
+        margin: 0 8px;
+        font-size: 0.9em;
+    }
+    .luxury-header .agendamento-btn {
+        display: none; 
+    }
+
+    /* Seção Sobre (Imagem Acima) */
+    .about-content {
+        flex-direction: column;
+    }
+    .image-placeholder-je {
+        order: -1; 
+        margin-bottom: 30px;
+        height: 350px;
+        min-width: 100%;
+    }
+
+    /* Galeria (Mais Colunas no Mobile) */
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    /* Serviços */
+    .service-item {
+        min-width: 90%;
+    }
+
+    /* Ajuste para o botão flutuante no mobile */
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+        bottom: 15px;
+        right: 15px;
+    }
+}
